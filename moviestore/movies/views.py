@@ -20,9 +20,19 @@ movies = [
     },
 ]
 
-
+# index
 def index(request):
     template_data = {}
     template_data['title'] = 'Movies'
     template_data['movies'] = movies
     return render(request, 'movies/index.html', {'template_data': template_data})
+
+
+# show function
+def show(request, id):
+    movie = movies[id - 1]  # extract the movie information based on the id - 1 index
+    
+    template_data = {}
+    template_data['title'] = movie['name']
+    template_data['movie'] = movie
+    return render(request, 'movies/show.html', {'template_data' : template_data})
